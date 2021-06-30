@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile editing</title>
+</head>
+<body>
+   
+    <h1>Profile editing</h1>
+    <form method="post">
+        {% csrf_token %}
+        Name: <input type="text" name="username"><br>
+        Email: <input type="email" name="email"><br>
+
+
+        <input type="submit" value="Change data">
+    </form>
+</body>
+</html>

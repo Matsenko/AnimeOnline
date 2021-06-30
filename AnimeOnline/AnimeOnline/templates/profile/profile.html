@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <style>
+    .anime_list{
+        display:flex;
+        flex-direction:column;
+        font-family: 'Roboto', sans-serif;
+        font-size:200%;
+        margin-top:30px;
+    
+    }
+    </style>
+</head>
+<body>
+    {%for a in user_data %}
+    {% if user.username == a.username%}
+    <div class="anime_list">
+        <strong>{{a.username}}</strong>
+        <strong>{{a.email}}</strong>
+        <strong>{{a.date_joined}}</strong>
+    </div>
+    {%endif%}
+    {%endfor%}
+</body>
+</html>

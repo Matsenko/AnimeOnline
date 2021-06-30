@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <title>{%block title%}AnimeOnline{%endblock%}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <style>
+        .header {
+            display: flex;
+            justify-content: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 200%;
+            flex-direction: row;
+            text-decoration: none;
+
+
+        }
+
+        .header a {
+            padding-left: 100px;
+            text-decoration: none;
+            color: black;
+        }
+
+            {
+            %block style%
+        }
+
+            {
+            %endblock%
+        }
+
+        .header img {
+            border-radius: 100px;
+            width: 75px;
+            height: 75px;
+            justify-content: flex-start;
+        }
+
+        .anime_list {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Roboto', sans-serif;
+            font-size: 200%;
+            margin-top: 30px;
+
+        }
+    </style>
+</head>
+
+<body>
+    {%block content%}
+    <header>
+        <div class="header"><img src="https://avatanplus.ru/files/resources/mid/5af7f930c7be916358a566b2.png" alt="">
+            {%if not user.is_authenticated%}
+            <a href="/login/auth0">Login</a>
+            <a href="/accounts/register">Register</a>
+            {%else%}
+            <a href="accounts/profile">My profile</a>
+            <a href="accounts/profile/editing">Profile editing</a>
+            <a href="/logout/">Logout</a>
+            {%endif%}
+
+        </div>
+    </header>
+    {% if latest_anime_list%}
+
+    {%for a in latest_anime_list %}
+    <div class="anime_list">
+        <a>{{a.anime_name}}</a>
+        <strong>{{a.pub_date}}</strong>
+    </div>
+
+    {%endfor%}
+
+    {%else%}
+    Anime not found
+    {%endif%}
+    
+
+    {%endblock%}
+</body>
+
+</html>

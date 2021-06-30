@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{%block title%}Last anime {%endblock%}
+{%block style%}
+.anime_list{
+    display:flex;
+    flex-direction:column;
+    font-family: 'Roboto', sans-serif;
+    font-size:200%;
+    margin-top:30px;
+
+}
+
+{%endblock%}
+{%block content%}
+{% if latest_anime_list%}
+
+{%for a in latest_anime_list %}
+<div class="anime_list">
+    <a>{{a.anime_name}}</a>
+    <strong>{{a.pub_date}}</strong>
+</div>
+
+{%endfor%}
+
+{%else%}
+Anime not found
+{%endif%}
+
+{%endblock%}
