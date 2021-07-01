@@ -21,5 +21,5 @@ urlpatterns = [
     path('anime_list/',views.AnimeList,name='AnimeList'),
     path('',include('social_django.urls')),
     # path('anime_list/<int:pk>', AnimeView.as_view()),
-
+    path('logout/',views.logout,name='logout')
 ]

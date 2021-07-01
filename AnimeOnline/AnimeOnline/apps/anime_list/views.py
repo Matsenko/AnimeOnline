@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render
 # from .models import Anime_list,Anime_comment
 
@@ -18,7 +19,8 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.http import request
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth import logout as django_logout
+from django.conf import settings
 def AnimeList(request):
     latest_anime_list=Anime_list.objects.order_by('-pub_date')[:10]
     return render(request,'anime_list/anime_list.html',{'latest_anime_list':latest_anime_list})
@@ -81,4 +83,10 @@ def ProfileEditingView(request):
             return render(request, "profile/profile_editing.html")
     except User.DoesNotExist:
         return"<h2>User not found</h2>"      
-                    
+
+def logout(request):
+    django_logout(request)
+    domain=settings.SOCIAL_AUTH_AUTH0_DOMAIN
+    client_id=settings.SOCIAL_AUTH_AUTH0_KEY
+    return_to='http://127.0.0.1:8000/'
+    return redirect(f'https://{domain}/v2/logout?client={client_id}&returnTo={return_to}')
