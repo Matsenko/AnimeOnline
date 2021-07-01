@@ -20,7 +20,6 @@ urlpatterns = [
     path('api/',AnimeView.as_view()),
     path('anime_list/',views.AnimeList,name='AnimeList'),
     path('',include('social_django.urls')),
-  
     # path('anime_list/<int:pk>', AnimeView.as_view()),
 
 ]
