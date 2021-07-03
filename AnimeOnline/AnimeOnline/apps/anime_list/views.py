@@ -88,5 +88,5 @@ def logout(request):
     django_logout(request)
     domain=settings.SOCIAL_AUTH_AUTH0_DOMAIN
     client_id=settings.SOCIAL_AUTH_AUTH0_KEY
-    return_to='http://127.0.0.1:8000/'
-    return redirect(f'https://{domain}/v2/logout?client={client_id}&returnTo={return_to}')
+    return_to='http://127.0.0.1:8000'
+    return redirect(f'https://{domain}/v2/logout?returnTo={return_to}&client_id={client_id}')
